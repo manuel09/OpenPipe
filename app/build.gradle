@@ -16,8 +16,8 @@ android {
     namespace 'org.schabi.newpipe'
 
     defaultConfig {
-        applicationId "org.polymorphicshade.tubular"
-        resValue "string", "app_name", "Tubular"
+        applicationId "org.manuel09.OpenPipe"
+        resValue "string", "app_name", "OpenPipe"
         minSdk 21
         targetSdk 33
         if (System.properties.containsKey('versionCodeOverride')) {
@@ -25,7 +25,7 @@ android {
         } else {
             versionCode 1004
         }
-        versionName "0.27.7"
+        versionName "0.1.0"
         if (System.properties.containsKey('versionNameSuffix')) {
             versionNameSuffix System.getProperty('versionNameSuffix')
         }
@@ -49,19 +49,19 @@ android {
             if (normalizedWorkingBranch.isEmpty() || workingBranch == "master" || workingBranch == "dev") {
                 // default values when branch name could not be determined or is master or dev
                 applicationIdSuffix ".debug"
-                resValue "string", "app_name", "Tubular Debug"
+                resValue "string", "app_name", "OpenPipe Debug"
             } else {
                 applicationIdSuffix ".debug." + normalizedWorkingBranch
-                resValue "string", "app_name", "Tubular " + workingBranch
-                archivesBaseName = 'Tubular_' + normalizedWorkingBranch
+                resValue "string", "app_name", "OpenPipe" + workingBranch
+                archivesBaseName = 'OpenPipe_' + normalizedWorkingBranch
             }
         }
 
         release {
             if (System.properties.containsKey('packageSuffix')) {
                 applicationIdSuffix System.getProperty('packageSuffix')
-                resValue "string", "app_name", "Tubular " + System.getProperty('packageSuffix')
-                archivesBaseName = 'Tubular_' + System.getProperty('packageSuffix')
+                resValue "string", "app_name", "OpenPipe" + System.getProperty('packageSuffix')
+                archivesBaseName = 'OpenPipe_' + System.getProperty('packageSuffix')
             }
             minifyEnabled true
             shrinkResources false // disabled to fix F-Droid's reproducible build
@@ -221,7 +221,7 @@ dependencies {
     // the corresponding commit hash, since JitPack sometimes deletes artifacts.
     // If there’s already a git hash, just add more of it to the end (or remove a letter)
     // to cause jitpack to regenerate the artifact.
-    implementation 'com.github.polymorphicshade:TubularExtractor:d1f1257f5af55da2247831fb4c923181473f0e36'
+    implementation 'com.github.manuel09:OpenPipeExtractor:d1f1257f5af55da2247831fb4c923181473f0e36'
     implementation 'com.github.TeamNewPipe:NoNonsense-FilePicker:5.0.0'
 
 /** Checkstyle **/
