@@ -50,14 +50,16 @@ jobs:
           unsigned_apk="app/build/outputs/apk/release/app-release-unsigned.apk"
           signed_apk="app/build/outputs/apk/release/OpenPipe-release-signed.apk"
 
+          # Copia unsigned -> signed (così non modifichi l'originale)
+            cp "$unsigned_apk" "$signed_apk"
+
           # Firma APK con apksigner
           $ANDROID_HOME/build-tools/34.0.0/apksigner sign \
             --ks apksign.keystore \
             --ks-pass pass:$SIGNING_STORE_PASSWORD \
             --key-pass pass:$SIGNING_KEY_PASSWORD \
             --ks-key-alias $SIGNING_KEY_ALIAS \
-            --out $signed_apk \
-            $unsigned_apk
+          $unsigned_apk
 
       - name: Verify signed APK
         env:
