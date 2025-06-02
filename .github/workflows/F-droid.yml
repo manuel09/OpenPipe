@@ -59,7 +59,7 @@ jobs:
             --ks-pass pass:$SIGNING_STORE_PASSWORD \
             --key-pass pass:$SIGNING_KEY_PASSWORD \
             --ks-key-alias $SIGNING_KEY_ALIAS \
-          $unsigned_apk
+           $signed_apk
 
       - name: Verify signed APK
         env:
